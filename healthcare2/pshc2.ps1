@@ -1317,7 +1317,7 @@ if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinati
     Write-Host "-----Form Recognizer-----"
 
     #  install the requests library using pip
-    pip install requests
+    pip install requests --user
 
     $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 
@@ -1348,7 +1348,7 @@ if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinati
     
     #delpoying a model
     #$openAIModel = az cognitiveservices account deployment create -g $rgName -n $openAIResource --deployment-name "text-davinci-003" --model-name "text-davinci-003" --model-version "1" --model-format OpenAI --scale-settings-scale-type "Standard"
-    $openAIModel = az cognitiveservices account deployment create -g $rgName -n $openAIResource --deployment-name "gpt-4" --model-name "gpt-4" --model-version "0613" --model-format OpenAI --sku-capacity 30 --sku-name "Standard" 
+    $openAIModel = az cognitiveservices account deployment create -g $rgName -n $openAIResource --deployment-name "gpt-4" --model-name "gpt-4" --model-version "0613" --model-format OpenAI --sku-capacity 20 --sku-name "Standard" 
 
     $filepath="./artifacts/amlnotebooks/Configurable.py"
     $itemTemplate = Get-Content -Path $filepath
